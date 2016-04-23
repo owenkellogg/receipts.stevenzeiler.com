@@ -1,6 +1,7 @@
 var React = require('react')
 var ReactDOM = require('react-dom');
 var RecentMass = require('./RecentMass');
+var http = require("superagent")
 
 class RecentMassView extends React.Component {
   render() {
@@ -9,17 +10,36 @@ class RecentMassView extends React.Component {
 }
 
 class InputMass extends React.Component {
+
+  handleClick(event) {
+    event.preventDefault() 
+
+    const massInput = document.getElementById("massInput")
+    const mass = massInput.value
+    massInput.value = ""
+
+    if (mass > 0) {
+
+      RecentMass.recordPounds(mass).then(record => {
+        renderHome(mass)
+      })
+      .catch(error => {
+        console.error("error")
+      })
+    }
+  }
+
   render() {
     return <div>
-      <form>
-        <input name="mass" type="number" placeholder="record lbs" step="0.01"/>
-        <button>Submit</button>
+      <form onSubmit={this.handleClick}>
+        <input id="massInput" name="mass" type="number" placeholder="record lbs" step="0.01"/>
+        <button onClick={this.handleClick}>Submit</button>
       </form>
     </div>
   }
 }
 
-RecentMass.fetch().then(mass => {
+function renderHome(mass) {
 
   ReactDOM.render(
 
@@ -33,5 +53,8 @@ RecentMass.fetch().then(mass => {
 
     document.getElementById("content")
   );
-})
+
+}
+
+RecentMass.fetch().then(renderHome)
 

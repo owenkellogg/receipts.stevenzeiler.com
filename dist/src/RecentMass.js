@@ -17,3 +17,21 @@ module.exports.fetch = () => {
     })
   })
 }
+
+
+module.exports.recordPounds = (mass) => {
+
+  return new Promise((resolve, reject) => {
+
+    http
+      .post('/measurements')
+      .send({ pounds: mass })
+      .end((err, res) => {
+        if (err) {
+          return reject(err)
+        }
+
+        resolve(res.body.measurement)
+      })
+  })
+}
