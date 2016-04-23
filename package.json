@@ -7,7 +7,8 @@
     "start": "babel-node config/bridges.js",
     "deploy": "s3-deploy --bucket yoga.stevenzeiler.com dist/**/*",
     "build": "browserify -t reactify dist/src/main.js --outfile dist/build/build.min.js",
-    "serve": "serve dist/"
+    "serve": "serve dist/",
+    "watch": "watchify -t reactify dist/src/main.js --outfile dist/build/build.min.js"
   },
   "author": "",
   "license": "ISC",
@@ -34,6 +35,7 @@
     "sequelize": "^3.21.0",
     "sqlite3": "^3.0.4",
     "superagent": "^1.8.3",
+    "watchify": "^3.7.0",
     "winston": "^0.8.3"
   },
   "devDependencies": {
