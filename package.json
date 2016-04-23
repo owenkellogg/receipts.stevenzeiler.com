@@ -4,7 +4,10 @@
   "description": "Auto-generated Bridges Node.js application",
   "scripts": {
     "test": "mocha --compilers js:babel/register test/**/*.js",
-    "start": "babel-node config/bridges.js"
+    "start": "babel-node config/bridges.js",
+    "deploy": "s3-deploy --bucket yoga.stevenzeiler.com dist/**/*",
+    "build": "browserify -t reactify dist/src/main.js --outfile dist/build/build.min.js",
+    "serve": "serve dist/"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +19,7 @@
     "bridges": "0.3.0",
     "bridges-application": "^0.2.1",
     "bridges-express": "^0.3.1",
+    "browserify": "^13.0.0",
     "express": "^4.10.5",
     "knex": "^0.7.3",
     "lodash": "^2.4.1",
@@ -23,9 +27,13 @@
     "nconf": "^0.7.1",
     "passport": "^0.2.1",
     "pg": "^4.1.0",
+    "react": "^15.0.1",
+    "react-dom": "^15.0.1",
+    "reactify": "^1.1.1",
     "require-all-to-camel": "^1.0.0",
     "sequelize": "^3.21.0",
     "sqlite3": "^3.0.4",
+    "superagent": "^1.8.3",
     "winston": "^0.8.3"
   },
   "devDependencies": {

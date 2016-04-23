@@ -5,10 +5,7 @@ module.exports = function(models, lib) {
   return {
     index: function(req, res, next) {
       BodyMass.getRecent(10).then(measurements => {
-
-        res.status(200).json({
-          measurements: measurements
-        })
+        res.send({ measurements: measurements })
       })
     },
 
