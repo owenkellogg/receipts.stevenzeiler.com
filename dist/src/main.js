@@ -10,7 +10,12 @@ class RecentMassView extends React.Component {
 
 class InputMass extends React.Component {
   render() {
-    return <form><input type="number" placeholder="pounds"/></form>
+    return <div>
+      <form>
+        <input name="mass" type="number" placeholder="record lbs" step="0.01"/>
+        <button>Submit</button>
+      </form>
+    </div>
   }
 }
 
@@ -18,10 +23,13 @@ RecentMass.fetch().then(mass => {
 
   ReactDOM.render(
 
-    (<RecentMassView
-      mass={mass}
-    />
-    <InputMass/>),
+    <div>
+      <RecentMassView
+        mass={mass}
+      />
+      <hr/>
+      <InputMass />
+    </div>,
 
     document.getElementById("content")
   );
