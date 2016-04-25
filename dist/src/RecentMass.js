@@ -1,10 +1,10 @@
 const http = require("superagent")
 
-module.exports.fetch = () => {
+module.exports.fetch = function() {
 
-  return new Promise((resolve, reject) => {
+  return new Promise(function(resolve, reject) {
 
-    http.get('/measurements').end((err, res) => {
+    http.get('/measurements').end(function(err, res) {
 
       if (err) {
         reject(err)
@@ -19,14 +19,14 @@ module.exports.fetch = () => {
 }
 
 
-module.exports.recordPounds = (mass) => {
+module.exports.recordPounds = function(mass) {
 
-  return new Promise((resolve, reject) => {
+  return new Promise(function(resolve, reject) {
 
     http
       .post('/measurements')
       .send({ pounds: mass })
-      .end((err, res) => {
+      .end(function (err, res) {
         if (err) {
           return reject(err)
         }

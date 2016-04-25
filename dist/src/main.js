@@ -20,10 +20,10 @@ class InputMass extends React.Component {
 
     if (mass > 0) {
 
-      RecentMass.recordPounds(mass).then(record => {
+      RecentMass.recordPounds(mass).then(function(record) {
         renderHome(mass)
       })
-      .catch(error => {
+      .catch(function(error) {
         console.error("error")
       })
     }
