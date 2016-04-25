@@ -14,8 +14,8 @@ class InputMass extends React.Component {
   handleClick(event) {
     event.preventDefault() 
 
-    const massInput = document.getElementById("massInput")
-    const mass = massInput.value
+    var massInput = document.getElementById("massInput")
+    var mass = massInput.value
     massInput.value = ""
 
     if (mass > 0) {

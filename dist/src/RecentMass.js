@@ -1,4 +1,4 @@
-const http = require("superagent")
+var http = require("superagent")
 
 module.exports.fetch = function() {
 
