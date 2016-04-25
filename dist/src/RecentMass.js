@@ -10,8 +10,8 @@ module.exports.fetch = function() {
         reject(err)
       }
 
-      let l = res.body.measurements.length
-      let mass = res.body.measurements[l-1].value
+      var l = res.body.measurements.length
+      var mass = res.body.measurements[l-1].value
 
       resolve(mass)
     })
