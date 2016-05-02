@@ -13,7 +13,7 @@ class ReceiptPhotoInput extends React.Component {
 
   render () {
     return <form>
-      <input type="file" accept="image/*"/>
+      <input type="file" accept="image/*" capture="camera"/>
     </form>
   }
 }
