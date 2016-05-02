@@ -1,18 +1,21 @@
 const assert = require("assert");
-const Measurement = require('../../models/measurement.js');
-const BodyMass = require("../../lib/BodyMass");
+const Receipt = require('../../models/receipt.js');
 
-describe("Measurement", () => {
+describe("Receipt", () => {
 
-  it("should record the body's mass", () => {
-    const mass = 191.1;
+  it("should record a recipt with s3 image url", () => {
 
-    return BodyMass.recordPounds(mass).then(measurement => {
-      assert(measurement.id)
-      assert(measurement.date)
-      assert.strictEqual(measurement.value, mass)
-      assert.strictEqual(measurement.type, "mass")
+    var url = "some_s3_image_url"
+
+    return Receipt.create({
+      s3_image_url: url
     })
-  }) 
+    .then(receipt => {
+      assert.strictEqual(receipt.s3_image_url, url)
+      assert(receipt.id > 0)
+      assert(receipt.createdAt)
+      assert(receipt.updatedAt)
+    })
+  })
 })
 

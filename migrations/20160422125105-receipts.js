@@ -2,25 +2,31 @@ var dbm = global.dbm || require('db-migrate');
 var type = dbm.dataType;
 
 exports.up = function(db, callback) {
-  console.log("migrating up")
 
-  db.createTable('measurements', {
+  db.createTable('receipts', {
     id: {
       type: 'int',
       primaryKey: true,
       autoIncrement: true 
     },
-    type: {
+    merchant_name: {
+      type: 'string',
+    },
+    category_name: {
+      type: 'string',
+    },
+    amount: {
+      type: 'decimal',
+    },
+    currency: {
+      type: 'string',
+    },
+    s3_image_url: {
       type: 'string',
       required: true
     },
-    date: {
-      type: 'date',
-      required: true
-    },
-    value: {
-      type: 'decimal',
-      required: true
+    notes: {
+      type: 'string'
     },
     createdAt: {
       type: 'date',
@@ -29,11 +35,10 @@ exports.up = function(db, callback) {
     updatedAt: {
       type: 'date',
       required: true
-    },
+    }
   }, callback);
 };
 
 exports.down = function(db, callback) {
-  db.dropTable("measurements", callback)
-  //callback()
+  db.dropTable("receipts", callback)
 };

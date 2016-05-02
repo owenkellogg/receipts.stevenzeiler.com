@@ -1,7 +1,34 @@
 var React = require('react')
 var ReactDOM = require('react-dom');
-var RecentMass = require('./RecentMass');
 var http = require("superagent")
+
+class TitleView extends React.Component {
+
+  render() {
+    return <h1>Upload Receipts</h1>
+  }
+}
+
+class ReceiptPhotoInput extends React.Component {
+
+  render () {
+    return <form>
+      <input type="file" accept="image/*"/>
+    </form>
+  }
+}
+
+ReactDOM.render(
+  <div>
+    <TitleView/>
+    <hr/>
+    <ReceiptPhotoInput/>
+  </div>,
+
+  document.getElementById("content")
+);
+
+/*
 
 class RecentMassView extends React.Component {
   render() {
@@ -58,3 +85,4 @@ function renderHome(mass) {
 
 RecentMass.fetch().then(renderHome)
 
+*/
